@@ -1,0 +1,501 @@
+:root {
+  --accent-color: #5f27cd;
+  --accent-color-hover: #5f27cd;
+  --primary-color: #341f97dd;
+  --disabled-color: #2e86de;
+  --dark-color: #222f3e;
+  --light-color: #ddd;
+  --danger-color: #ff6b6b;
+  --content-color: #c8d6e5dd;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body::before {
+  content: "";
+  height: 100vh;
+  filter: grayscale();
+}
+
+body {
+  font-family: "Ubuntu", sans-serif;
+  background: center center / cover url(../images/background.png) no-repeat;
+}
+
+h1 {
+  font-family: "Limelight", cursive;
+  margin: 2rem;
+  color: var(--light-color);
+  text-shadow: 2px 2px 4px var(--dark-color);
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-flow: column;
+}
+
+.content {
+  flex: 1;
+  max-width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+header {
+  background-color: var(--primary-color);
+  border-bottom: 1px solid var(--light-color);
+}
+
+header ul li a {
+  color: var(--light-color);
+  text-decoration: none;
+}
+
+header ul {
+  display: flex;
+  flex-direction: row nowrap;
+  justify-content: flex-end;
+  list-style-type: none;
+}
+
+header ul li {
+  padding: 1rem;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  background-color: var(--primary-color);
+  border-top: 1px solid var(--light-color);
+}
+
+footer p {
+  color: var(--light-color);
+  padding: 1rem;
+}
+
+.center {
+  text-align: center;
+}
+
+.form-control {
+  border: 1px solid var(--dark-color);
+  border-radius: 6px;
+  padding: 0.7rem;
+  margin: 0.3rem;
+}
+
+.btn {
+  border: 1px solid #eee;
+  border-radius: 6px;
+  padding: 0.7rem;
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: #eee;
+  width: 25px;
+  width: fit-content;
+}
+
+.btn:hover {
+  background-color: var(--accent-color);
+}
+
+#addBtn {
+  font-size: 1.5em;
+}
+#addBtn:hover {
+  cursor: pointer;
+}
+
+.fas,
+.far {
+  padding: 0.5rem;
+}
+
+.fa-trash-alt:hover {
+  color: var(--danger-color);
+  cursor: pointer;
+}
+.fa-edit:hover {
+  color: var(--accent-color);
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-color);
+}
+
+#sale {
+  display: grid;
+  grid:
+    "form form form form" 4rem
+    "table table table table" 1fr
+    ". . . bottom" minmax(min-content, max-content)
+    / 1fr 1fr minmax(min-content, max-content);
+}
+
+#item {
+  display: grid;
+  grid:
+    "form form form form" 4rem
+    "table table table table" 1fr
+    ". . . bottom" minmax(min-content, max-content)
+    / 1fr 1fr minmax(min-content, max-content);
+}
+
+form {
+  display: flex;
+  flex-flow: row nowrap;
+  background-color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  grid-area: form;
+}
+
+.table {
+  width: 100%;
+  table-layout: fixed;
+  border-spacing: 0rem 1rem;
+  border-collapse: collapse;
+  grid-area: table;
+}
+
+.amount {
+  margin-top: 0.5rem;
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  text-align: right;
+  padding: 1rem;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+}
+
+.title,
+.values {
+  padding: 0.5rem;
+}
+
+.table tr > *:nth-child(1) {
+  width: 3rem;
+}
+.table tr > *:nth-child(2) {
+  width: 1rem;
+}
+.table tr > *:nth-child(3) {
+  width: 10rem;
+}
+.table tr > *:nth-child(4) {
+  width: 1.5rem;
+}
+.table tr > *:nth-child(5) {
+  width: 1.5rem;
+}
+.table tr > *:nth-child(6) {
+  width: 1.5rem;
+}
+.table tr > *:nth-child(7) {
+  width: 1.5rem;
+}
+
+.table thead tr th {
+  padding: 1.2rem;
+}
+
+.table-dark {
+  height: 2.5rem;
+  background-color: var(--primary-color);
+  font-weight: bold;
+  color: #fff;
+}
+
+.table tbody tr td {
+  border-bottom: 1px solid var(--dark-color);
+  background-color: var(--content-color);
+  padding: 0.4rem;
+}
+
+.table-right {
+  text-align: right;
+}
+
+.table-center {
+  text-align: center;
+}
+
+.item-picture {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 0.75rem;
+  border: 2px solid var(--light-color);
+  box-shadow: 1px 1px 4px var(--dark-color);
+  margin: 0.25rem;
+}
+
+.bottom {
+  display: flex;
+  grid-area: bottom;
+  flex-direction: column;
+}
+
+.amount p {
+  padding: 0.3rem;
+}
+
+.amount p {
+  padding: 0.3rem;
+}
+
+.amount .title p:nth-child(3) {
+  margin-bottom: 0.4rem;
+}
+
+.amount .values p:nth-child(3) {
+  margin-top: 0.2rem;
+  border-bottom: 1px solid var(--light-color);
+  margin-bottom: 0.2rem;
+}
+
+.amount .title p:nth-child(4) {
+  font-weight: bold;
+}
+
+.amount .values p:nth-child(4) {
+  font-weight: bold;
+}
+
+.bottom form input {
+  width: 100%;
+}
+
+#error {
+  padding: 1rem;
+  border: 3px solid var(--dark-color);
+  background-color: var(--accent-color);
+  color: var(--light-color);
+  border-radius: 5px;
+}
+
+/* ---------------------------------- */
+
+.itemNavbar {
+  margin-top: 0.5rem;
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  text-align: right;
+
+  position: absolute;
+  right: 10%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+}
+.itemNavbar select {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  padding: 1rem;
+  font-weight: bold;
+  border: none;
+}
+
+.itemTable {
+  width: 100%;
+  table-layout: fixed;
+  border-spacing: 0rem 1rem;
+  border-collapse: collapse;
+  grid-area: table;
+}
+
+.itemTable tbody tr td {
+  border-bottom: 1px solid var(--dark-color);
+  background-color: var(--content-color);
+  padding: 0.4rem;
+}
+
+.itemBtmbar {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  padding: 0.5em;
+}
+.itemBtmbar2 {
+  /* margin-top: 0.5rem; */
+  /* background-color: var(--primary-color); */
+  color: var(--light-color);
+  padding: 1em;
+}
+
+.arrowDown {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.pages {
+  text-decoration: none;
+}
+.pages:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  font-weight: bold;
+  background-color: var(--accent-color);
+}
+.currPage {
+  transform: scale(1.2);
+}
+
+/* //////////////////////////////////////////////////// */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  background-color: var(--primary-color);
+  color: white;
+  width: 500px;
+  max-width: 80%;
+  visibility: hidden;
+}
+
+#modalForm {
+  display: flex;
+  flex-direction: column;
+  margin: 5%;
+}
+
+.modal-header {
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid white;
+}
+.modal-body {
+  padding: 5%;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* opacity: 0; */
+
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  visibility: hidden;
+}
+.overlay.active {
+  pointer-events: all;
+  opacity: 1;
+}
+
+.modal2 {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  background-color: var(--primary-color);
+  color: white;
+  width: 500px;
+  max-width: 80%;
+  visibility: hidden;
+}
+
+#modal2Form {
+  display: flex;
+  flex-direction: column;
+  margin: 5%;
+}
+.modal2-header {
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid white;
+}
+.modal2-body {
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between;
+}
+
+#newItemImg:hover {
+  cursor: pointer;
+}
+
+#imgInput {
+  visibility: hidden;
+}
+
+#newItemDescription {
+  height: 200px;
+}
+
+#editItemImg:hover {
+  cursor: pointer;
+}
+
+#editImgInput {
+  visibility: hidden;
+}
+
+#editItemDescription {
+  height: 200px;
+}
+
+.modal3 {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  background-color: var(--primary-color);
+  color: white;
+  width: 500px;
+  max-width: 80%;
+  visibility: hidden;
+}
+
+/* #modal3Form {
+  display: flex;
+  flex-direction: column;
+  margin: 5%;
+} */
+.modal3-header {
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid white;
+}
+.modal2-body {
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between;
+}

@@ -1,0 +1,38 @@
+extends layouts/main.pug
+
+block content
+  section#sale
+    form(action="/lines" method="POST")
+      select.form-control(type="text" name="sku")
+          option(value="") Sélectionnez un produit
+          each item in items
+            option(value=item.sku) #{item.sku + " " + item.name}
+      input.form-control(type="number" placeholder="Quantity" name="quantity" min=1 value=1)
+      input.form-control(type="submit" class="btn btn-primary" value="Ajouter")
+    table(class="table")
+      thead(class="table-dark")
+        tr
+          th(scope="col") Sku
+          th(scope="col") Qté
+          th(scope="col") Nom
+          th(scope="col") Prix
+          th(scope="col") Montant
+          th(scope="col") Image
+          th
+      tbody
+        each line in lines
+          include includes/line
+    .bottom
+      .amount
+        .title
+          p Sous-total :
+          p T.P.S :
+          p T.V.Q :
+          P Total :
+        .values
+          p #{ results.subtotal.toFixed(2) } $
+          p #{ results.gst.toFixed(2) } $
+          p #{ results.qst.toFixed(2) } $
+          p #{ results.total.toFixed(2) } $
+      form(action="/sale/close" method="post")
+        input.btn.btn-primary(type="submit" value="Terminer Vente" disabled=!lines.length)

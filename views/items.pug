@@ -1,0 +1,112 @@
+extends layouts/main.pug
+
+
+block content
+  script(src='/javascript/script.js' defer)
+  section#item
+
+    .itemNavbar         
+        form(method='get')
+
+            //- p Afficher #{limit}     
+            select(name='limit' onchange=' this.form.submit()')
+                option(value=0) Choisir nombre d'articles 
+                option(value=10) Afficher 10 articles par page 
+                option(value=50) Afficher 50 articles par page
+                option(value=100) Afficher 100 articles par page
+                option(value=1500) Tous
+
+            
+             
+    
+    table(class="itemTable")
+      thead(class="table-dark")
+        
+        tr
+          th(scope="col") Image
+          th(scope="col") SKU
+          th(scope="col") Marque 
+          th(scope="col") Produit
+          th(scope="col") Prix
+          th(scope="col") 
+            p#addBtn &#43
+               
+          
+      tbody
+        each item in items
+          include includes/item
+  
+    .modal 
+        .modal-header 
+            h1 Ajout d'un produit
+        .modal-body
+          form#modalForm(action=`/items` method='POST')
+            div(style='display:flex;justify-content: space-evenly; margin: 5%;') 
+                div
+                    img#newItemImg(src='/images/image-placeholder.png' alt='Placeholder for new item' width='60%' height='60%')
+                    input#imgInput.form-control-file(type="file" name="image")
+ 
+                div
+                    label(for='SKU') SKU
+                    br
+                    input#newItemSKU(type='text' name='SKU' maxlength='7' minlength='7' required)
+                    br
+                    label(for='Prix') Prix
+                    br
+                    input#newItemPrice(type='number' name='Prix' required)
+            br
+            label(for='Marque') Marque
+            br
+            input#newItemBrand(type='text' name='Marque' maxlength='30' minlength='2')
+            br
+            label(for='Nom') Nom
+            br
+            input#newItemName(type='Nom' name='Nom' required)
+            br
+            label(for='Description') Description
+            br
+            textarea#newItemDescription(name="Description", cols="8", rows="10")  
+            br
+            div(style='display:flex;justify-content: flex-end') 
+                button(type="submit" class="btn" value="Confirmer") Confirmer
+                button#CancelBtn(type="button" class="btn" value="Annuler") Annuler
+            if msg 
+                p= msg
+
+   
+
+  #overlay.overlay
+  table
+   tr.itemBtmbar
+
+    td    
+        a.itemBtmbar2(href=`/items/page=1?limit=${limit}`) 
+            i.fa.fa-angle-double-left(style='font-size:36px' )
+    td
+        if pageNumber>4    
+            a.itemBtmbar2(href=`/items/page=${pageNumber-3}?limit=${limit}`) 
+                i.fa.fa-angle-left(style='font-size:36px' )
+    td    
+        if pageNumber>2        
+            a.pages.itemBtmbar2(href=`/items/page=${pageNumber-2}?limit=${limit}`) #{pageNumber-2}
+    td
+        if pageNumber>1        
+            a.pages.itemBtmbar2(href=`/items/page=${pageNumber-1}?limit=${limit}`) #{pageNumber-1}
+    td
+        p.pages.itemBtmbar2.currPage(style='font-weight: bold; background-color: var(--accent-color); font-size: 1.2em;')  #{pageNumber} 
+    td
+        if (((pageNumber+1)*limit) < count)
+            a.pages.itemBtmbar2(href=`/items/page=${pageNumber+1}?limit=${limit}`) #{pageNumber+1}
+    td
+        if (((pageNumber+2)*limit) < count)
+            a.pages.itemBtmbar2(href=`/items/page=${pageNumber+2}?limit=${limit}`) #{pageNumber+2} 
+    td
+        if (((pageNumber+3)*limit) < count)
+            a.itemBtmbar2(href=`/items/page=${pageNumber+3}?limit=${limit}`) 
+                i.fa.fa-angle-right(style='font-size:36px' )
+    td
+        a.itemBtmbar2(href=`/items/page=${lastPage}?limit=${limit}`) 
+            i.fa.fa-angle-double-right(style='font-size:36px' )
+
+       
+    

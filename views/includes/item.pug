@@ -1,0 +1,84 @@
+if item
+  
+  
+
+
+  tr
+    td(class="table-center")
+      img.item-picture(src=item.image_url != '' ? item.image_url : '/images/image-placeholder.png')
+    td(class="table-center")= item.sku
+    td(class="table-center")= item.brand
+    td(class="table-center")= item.name
+    td(class="table-center") #{ item.sale_price.toFixed(2) } $
+   
+    td(class="table-center")
+      i#editBtn(class="fas fa-edit")
+      i#delBtn(class="far fa-trash-alt")
+  
+      .modal2 
+        .modal2-header 
+            h1 Modification d'un produit
+        .modal2-body
+          form#modal2Form(action=`/items/edit` method= 'POST')
+            div(style='display:flex;justify-content: space-around; margin: 5%;') 
+                div
+                    img#editItemImg(src=`${item.image_url}` alt='Placeholder for new item' width='60%' height='60%' name='editImg')
+                    input#editImgInput.form-control-file(type="file" name="image")
+ 
+                div
+                    label(for='SKU') SKU
+                    br
+                    input#editItemSKU(type='text' name='SKU' value=`${item.sku}` readonly)
+                    br
+                    label(for='Prix') Prix
+                    br
+                    input#editItemPrice(type='number' name='Prix' value=`${item.sale_price}` required)
+            br
+            label(for='Marque') Marque
+            br
+            input#editItemBrand(type='text' name='Marque' value=`${item.brand}` maxlength='30' minlength='2' )
+            br
+            label(for='Nom') Nom
+            br
+            input#editItemName(type='Nom' name='Nom' value=`${item.name}` required)
+            br
+            label(for='Description') Description
+            br
+            textarea#editItemDescription(name="Description", cols="8", rows="10")
+              | #{item.description}
+        
+            br
+            div(style='display:flex;justify-content: flex-end') 
+                button#editConfirmBtn(type="submit" class="btn" value="Confirmer") Confirmer
+                button#editCancelBtn(type="button" class="btn" value="Annuler") Annuler
+            if msg 
+                p= msg
+
+      .modal3 
+        .modal3-header 
+            h1 Confirmation
+        .modal3-body
+          form#modal3Form(action=`/items/delete` method= 'POST')
+
+            div(style='display:flex;justify-content: space-around; margin: 5%;') 
+                
+                    div
+                        img#editItemImg(src=`${item.image_url}` alt='Placeholder for new item' width='60%' height='60%' name='editImg')
+    
+                    div
+                        label(for='SKU') SKU: #{item.sku}
+                        br
+                        label(for='Marque' ) Marque: #{item.brand}
+                        br
+                        label(for='Prix') Prix: #{item.sale_price}$
+                        br
+                        br
+                        br
+                        br
+                        br
+                        button#delConfirmBtn(type="submit" class="btn" value="Confirmer") Confirmer
+                        button#delCancelBtn(type="button" class="btn" value="Annuler") Annuler
+                   
+            if msg 
+              p= msg
+

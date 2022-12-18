@@ -1,0 +1,12 @@
+if line
+  tr(id=`SKU${line.sku}`)
+    td(class="table-center")= line.sku
+    td(class="table-center")= line.quantity
+    td= line.name
+    td(class="table-right") #{ line.price.toFixed(2) } $
+    td(class="table-right") #{ line.total.toFixed(2) } $
+    td(class="table-center")
+      img.item-picture(src=line.image_url != '' ? line.image_url : '/images/image-placeholder.png')
+    td(class="table-center")
+      i(class="fas fa-edit" onclick=`editRecord(${line.sku}`)
+      i(class="far fa-trash-alt" onclick=`deleteRecord(${line.sku}`)
